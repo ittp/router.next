@@ -13,8 +13,15 @@
 
 // /rci/show/acme/ndns-domain
 
-export default (req, res) => {
-  // Open Chrome DevTools to step through the debugger!
-  // debugger;
-  res.status(200).json({ name: 'Hello, world!' });
-};
+export default function handler(req, res) {
+  const { pid } = req.query;
+
+  let response = {};
+  if (req.query) {
+    response = req.query;
+  } else {
+    response = 'empty';
+  }
+
+  res.end(`Response: ${response}`);
+}
